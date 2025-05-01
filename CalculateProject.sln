@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger", "..\..\..\Downloads\aspnetcore-server-generated\src\IO.Swagger\IO.Swagger.csproj", "{BAB8EA4D-9CE7-3627-5599-B86FE4EA50B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.Swagger.Tests", "..\..\..\Downloads\aspnetcore-server-generated\src\IO.Swagger.Tests\IO.Swagger.Tests.csproj", "{C3044940-9E3A-C51D-E7AC-218952B654CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAB8EA4D-9CE7-3627-5599-B86FE4EA50B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB8EA4D-9CE7-3627-5599-B86FE4EA50B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB8EA4D-9CE7-3627-5599-B86FE4EA50B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB8EA4D-9CE7-3627-5599-B86FE4EA50B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3044940-9E3A-C51D-E7AC-218952B654CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3044940-9E3A-C51D-E7AC-218952B654CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3044940-9E3A-C51D-E7AC-218952B654CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3044940-9E3A-C51D-E7AC-218952B654CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40688272-8943-44AF-BDDB-E3E2A7674B21}
+	EndGlobalSection
+EndGlobal

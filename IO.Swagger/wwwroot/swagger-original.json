@@ -1,0 +1,138 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Calculator API",
+    "description" : "API שמבצע פעולה חשבונית על שני מספרים לפי כותרת Header",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/lital-e6f/calculateApi/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "http://localhost:5000"
+  } ],
+  "paths" : {
+    "/calculate" : {
+      "post" : {
+        "summary" : "בצע פעולה חשבונית בין שני מספרים",
+        "parameters" : [ {
+          "name" : "X-Operation",
+          "in" : "header",
+          "description" : "הפעולה שיש לבצע (add, subtract, multiply, divide)",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "enum" : [ "add", "subtract", "multiply", "divide" ]
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/calculate_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "התוצאה",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "בקשה לא חוקית (כגון פעולה לא חוקית או חוסר פרמטרים)",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_400"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "לא מורשה"
+          },
+          "500" : {
+            "description" : "שגיאת חישוב (למשל, חילוק באפס)",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_500"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "inline_response_200" : {
+        "type" : "object",
+        "properties" : {
+          "result" : {
+            "type" : "number",
+            "example" : 15
+          }
+        },
+        "example" : {
+          "result" : 15
+        }
+      },
+      "inline_response_500" : {
+        "type" : "object",
+        "properties" : {
+          "error" : {
+            "type" : "string",
+            "example" : "Cannot divide by zero"
+          }
+        }
+      },
+      "calculate_body" : {
+        "required" : [ "number1", "number2" ],
+        "type" : "object",
+        "properties" : {
+          "number1" : {
+            "type" : "number",
+            "description" : "המספר הראשון",
+            "example" : 10
+          },
+          "number2" : {
+            "type" : "number",
+            "description" : "המספר השני",
+            "example" : 5
+          }
+        }
+      },
+      "inline_response_400" : {
+        "type" : "object",
+        "properties" : {
+          "error" : {
+            "type" : "string",
+            "example" : "Invalid operation or missing parameters"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}
