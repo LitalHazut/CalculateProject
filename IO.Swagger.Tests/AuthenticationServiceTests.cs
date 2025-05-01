@@ -27,6 +27,9 @@ namespace IO.Swagger.Tests
             _authService = new AuthenticationService(configuration);
         }
 
+        /// <summary>
+        /// Tests that valid credentials return a non-null and non-empty token.
+        /// </summary>
         [Test]
         public void Authenticate_ValidCredentials_ReturnsToken()
         {
@@ -36,6 +39,10 @@ namespace IO.Swagger.Tests
             Assert.IsNotEmpty(token);
         }
 
+
+        /// <summary>
+        /// Tests that invalid credentials return null.
+        /// </summary>
         [Test]
         public void Authenticate_InvalidCredentials_ReturnsNull()
         {

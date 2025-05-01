@@ -6,15 +6,27 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 namespace IO.Swagger.Services
 {
+    /// <summary>
+    /// Provides authentication services, including JWT token generation.
+    /// </summary>
     public class AuthenticationService
     {
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationService"/> class.
+        /// </summary>
+        /// <param name="configuration">Application configuration used to access JWT settings.</param>
         public AuthenticationService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Authenticates the specified user and returns a JWT token if successful.
+        /// </summary>
+        /// <param name="user">The user credentials.</param>
+        /// <returns>A JWT token string if authentication is successful; otherwise, <c>null</c>.</returns>
         public string Authenticate(UserModel user)
         {
             if (user.Username == "admin" && user.Password == "password")

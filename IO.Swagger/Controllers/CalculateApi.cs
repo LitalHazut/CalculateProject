@@ -7,19 +7,23 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace IO.Swagger.Controllers
 {
+    /// <summary>
+    /// Provides basic math operations.
+    /// </summary>
     [ApiController]
     public class CalculateApi : ControllerBase
     {
         /// <summary>
-        /// בצע פעולה חשבונית בין שני מספרים
+        /// Performs a math operation (add, subtract, multiply, divide) on two numbers.
         /// </summary>
-        /// <param name="body"></param>
-        /// <param name="xOperation">הפעולה שיש לבצע (add, subtract, multiply, divide)</param>
-        /// <response code="200">התוצאה</response>
-        /// <response code="400">בקשה לא חוקית (כגון פעולה לא חוקית או חוסר פרמטרים)</response>
-        /// <response code="401">לא מורשה</response>
-        /// <response code="500">שגיאת חישוב (למשל, חילוק באפס)</response>
-        
+        /// <param name="body">Object with number1 and number2.</param>
+        /// <param name="xOperation">The operation to perform.</param>
+        /// <returns>The result of the operation.</returns>
+        /// <response code="200">Calculation successful.</response>
+        /// <response code="400">Bad request (invalid operation or missing data).</response>
+        /// <response code="401">Unauthorized.</response>
+        /// <response code="500">Calculation error (e.g. divide by zero).</response>
+
         [Authorize]
         [HttpPost]
         [Route("/lital-e6f/calculateApi/1.0.0/calculate")]

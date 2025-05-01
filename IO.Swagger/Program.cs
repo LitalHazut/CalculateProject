@@ -5,6 +5,8 @@ using IO.Swagger.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// Add JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -30,6 +32,8 @@ builder.Services.AddSingleton<AuthenticationService>();
 
 builder.Services.AddControllers();
 
+
+// Configure Swagger for Bearer Token
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
