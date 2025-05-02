@@ -4,6 +4,7 @@
 
 ##### Build the image from the Dockerfile
 go to \CalculateProject\IO.Swagger and run -
+
 docker build -t swagger-api .
 
 ##### Run the container with port mapping
