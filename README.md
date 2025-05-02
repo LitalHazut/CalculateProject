@@ -3,10 +3,11 @@
 ### 🔹 Using Docker Only
 
 ##### Build the image from the Dockerfile
-docker build -t my-dotnet-app
+go to \CalculateProject\IO.Swagger and run -
+docker build -t swagger-api .
 
 ##### Run the container with port mapping
-docker run -d -p 5000:80 my-dotnet-app
+docker run -d -p 8080:80 my-dotnet-app
 The API will be available at: http://localhost:5000
 
 ### 🔹 Using Docker Compose
