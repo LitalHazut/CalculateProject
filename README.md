@@ -10,7 +10,7 @@ docker build -t swagger-api .
 ##### Run the container with port mapping
 docker run -d -p 8080:8080 -e ASPNETCORE_ENVIRONMENT=Development swagger-api
 
-The API will be available at: http://localhost:8080
+GO TO - Swagger UI and see calculateApi.
 
 ##### If you want to stop the container
 docker stop <CONTAINER_ID>
