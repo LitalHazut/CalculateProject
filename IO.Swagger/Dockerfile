@@ -1,19 +1,29 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:7.0 AS build-env
+# Use the official .NET Core SDK as a parent image
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
-
-# copy csproj and restore as distinct layers
+# Copy the project file and restore any dependencies (use .csproj for the project name)
 COPY *.csproj ./
 RUN dotnet restore
 
-# copy everything else and build
-COPY . ./
+# Copy the rest of the application code
+COPY . .
+
+# Publish the application
 RUN dotnet publish -c Release -o out
 
-# build runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:7.0
+# Build the runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=build-env /app/out .
 
+
+# הגדרת משתני סביבה
+ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_ENVIRONMENT=Development
+
+COPY --from=build /app/out ./
+# Expose the port your application will run on
+EXPOSE 80
+
+# Start the application
 ENTRYPOINT ["dotnet", "IO.Swagger.dll"]

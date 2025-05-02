@@ -8,6 +8,7 @@
 		<AssemblyName>IO.Swagger</AssemblyName>
 		<PackageId>IO.Swagger</PackageId>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
 	</PropertyGroup>
 
 	<ItemGroup>
